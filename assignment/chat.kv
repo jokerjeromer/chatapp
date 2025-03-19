@@ -1,0 +1,32 @@
+#:kivy 2.2.1
+
+<ChatLayout>:
+    orientation: 'vertical'
+    padding: 10
+    spacing: 10
+
+    ScrollView:
+        BoxLayout:
+            id: chat_history
+            orientation: 'vertical'
+            size_hint_y: None
+            height: self.minimum_height
+            spacing: 10
+            padding: 10
+
+    BoxLayout:
+        size_hint_y: None
+        height: 50
+        spacing: 10
+
+        TextInput:
+            id: message_input
+            hint_text: 'Type your message...'
+            multiline: False
+            size_hint_x: 0.8
+            on_text_validate: app.send_message()
+
+        Button:
+            text: 'Send'
+            size_hint_x: 0.2
+            on_press: app.send_message() 
